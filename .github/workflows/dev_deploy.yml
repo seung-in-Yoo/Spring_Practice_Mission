@@ -1,0 +1,15 @@
+name: UMC Dev CI/CD
+
+on:
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'develop'
+
+    steps:
+      - name: echo deploy start
+        run: echo "develop 브랜치에 PR이 머지 완료. CI/CD 파이프라인 시작"
